@@ -105,8 +105,8 @@ static PyObject* sign_message(PyObject* self, PyObject* args) {
  
 static PyMethodDef SignMethods[] =
 {
-     {"verify_message", verify_message, METH_VARARGS, "verify message."},
-     {"sign_message", sign_message, METH_VARARGS, "sign message."},
+     {"verify_message", verify_message, METH_VARARGS, "verify_message(BitcoinAddress, Signature, Message)"},
+     {"sign_message", sign_message, METH_VARARGS, "sign_message(Base58PrivateKey, Message)"},
      {NULL, NULL, 0, NULL}
 };
  

@@ -14,7 +14,24 @@ This currently depends on OpenSSL and Python.  On Ubuntu or similar systems, the
 
 ## Usage
 
-Please see [tests/test.py](https://github.com/bobalot/bitcoinsign/tree/master/tests/test.py) for examples of how to use the sign and verify module in python.
+Please see [tests/test.py](https://github.com/bobalot/bitcoinsign/tree/master/tests/test.py) for examples of how to use the sign and verify module in python. 
+	
+	import bitcoinsign
+	# Don't import this into your wallet, thinking he-he someone might have 
+	# left some coins in there that I can steal.
+	# Many popular services such as blockchain.info will set the latest 
+	# empty address in your wallet as the change address for the next transaction.
+	# So the next time you send some funds the change will end up in this address 
+	# and someone else will almost certainly be watching it and take the coins before you do.
+	priv_key = "5KBXt56X5DTzczziU7pqKB6g7iE7HcUCePeTEgF3N2mhhf7ENug"
+	address = "1JTBWx4TQuPntUa4LDShg6xsbfEVFWbG9x"
+	message = "Hello World!"
+
+	signature = bitcoinsign.sign_message(priv_key, "Hello World!")
+	verified = bitcoinsig.verify_message(address, signature, message)
+
+	assert(verified is True)
+
 
 ## Security
 
