@@ -17,10 +17,10 @@ This currently depends on OpenSSL and Python.  On Ubuntu or similar systems, the
 Please see [tests/test.py](https://github.com/bobalot/bitcoinsign/tree/master/tests/test.py) for examples of how to use the sign and verify module in python. 
 	
 	import bitcoinsign
-	# Don't import this into your wallet, thinking he-he someone might have 
+	# Don't import this private key into your wallet, thinking he-he someone might have 
 	# left some coins in there that I can steal.
 	# Many popular services such as blockchain.info will set the latest 
-	# empty address in your wallet as the change address for the next transaction.
+	# added address in your wallet as the change address for the next transaction.
 	# So the next time you send some funds the change will end up in this address 
 	# and someone else will almost certainly be watching it and take the coins before you do.
 	priv_key = "5KBXt56X5DTzczziU7pqKB6g7iE7HcUCePeTEgF3N2mhhf7ENug"
@@ -41,7 +41,7 @@ Remember that arguments passed on a process' command line are visible to local u
 
 ## Performance
 
-It's faster than any implementation done in pure python. Other implementations in pure-python have taken 600ms+ in my tests.
+It's faster than any implementation done in pure python. Implementations in pure python have taken 600ms+ in my tests.
 
 	%timeit -n 10 -r 10 sig = bitcoinsign.sign_message(priv_key, "Hello World!")
 	10 loops, best of 10: 2.71 ms per loop

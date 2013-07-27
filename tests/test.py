@@ -5,10 +5,10 @@ import string
 
 class BitcoinSignTest(unittest.TestCase):
 
-	# Don't import this into your wallet, thinking he-he someone might have 
+	# Don't import this private key into your wallet, thinking he-he someone might have 
 	# left some coins in there that I can steal.
 	# Many popular services such as blockchain.info will set the latest 
-	# empty address in your wallet as the change address for the next transaction.
+	# added address in your wallet as the change address for the next transaction.
 	# So the next time you send some funds the change will end up in this address 
 	# and someone else will almost certainly be watching it and take the coins before you do.
 	priv_key = "5KBXt56X5DTzczziU7pqKB6g7iE7HcUCePeTEgF3N2mhhf7ENug"
