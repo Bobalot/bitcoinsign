@@ -41,4 +41,10 @@ Remember that arguments passed on a process' command line are visible to local u
 
 ## Performance
 
-It's faster than any implementation done in pure python, I'll create some performance tests eventually. But it can average around 1ms for a sign/verify function. Other implementations in pure-python have taken 600ms+ in my tests.
+It's faster than any implementation done in pure python. Other implementations in pure-python have taken 600ms+ in my tests.
+
+	%timeit -n 10 -r 10 sig = bitcoinsign.sign_message(priv_key, "Hello World!")
+	10 loops, best of 10: 2.71 ms per loop
+
+	%timeit -n 10 -r 10 bitcoinsign.verify_message(address, sig, "Hello World!")
+	10 loops, best of 10: 669 us per loop
