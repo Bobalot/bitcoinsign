@@ -90,8 +90,6 @@ static PyObject* sign_message(PyObject* self, PyObject* args) {
     CSecret csecret = vchSecret.GetSecret(fCompressed);
     key.SetSecret(csecret, fCompressed);
 
-
-
     CHashWriter ss(0);
     ss << strMessageMagic;
     ss << strMessage;

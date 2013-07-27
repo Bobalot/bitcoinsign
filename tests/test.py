@@ -1,5 +1,7 @@
 import bitcoinsign
 import unittest
+import random
+import string
 
 class BitcoinSignTest(unittest.TestCase):
 
@@ -22,9 +24,19 @@ class BitcoinSignTest(unittest.TestCase):
 		message = "Hello World!"
 
 		signature = bitcoinsign.sign_message(self.priv_key, message)
+		
 		# Ensure the signature is not false
 		self.assertTrue(signature)
 		self.assertTrue(bitcoinsign.verify_message(self.address, signature, message))
+
+	def test_sign_and_verify_random(self):
+		for i in range(100):
+			message = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in range(20))
+			signature = bitcoinsign.sign_message(self.priv_key, message)
+			
+			self.assertTrue(signature)
+			self.assertTrue(bitcoinsign.verify_message(self.address, signature, message))
+
 
 if __name__ == '__main__':
     unittest.main()
