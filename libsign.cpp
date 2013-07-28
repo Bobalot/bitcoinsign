@@ -10,7 +10,7 @@ using namespace std;
 // Need to import key.cpp to be static
 #include "key.cpp"
 
-bool fTestNet = false;
+bool fTestNet = true;
 const string strMessageMagic = "Bitcoin Signed Message:\n"; // from main.cpp
 
 static PyObject* validate_address(PyObject* self, PyObject* args) {

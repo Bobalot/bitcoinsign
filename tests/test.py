@@ -22,7 +22,6 @@ class BitcoinSignTest(unittest.TestCase):
 
 	def test_sign_and_verify(self):
 		message = "Hello World!"
-
 		signature = bitcoinsign.sign_message(self.priv_key, message)
 		
 		# Ensure the signature is not false
