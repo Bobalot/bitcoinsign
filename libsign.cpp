@@ -13,6 +13,18 @@ using namespace std;
 bool fTestNet = false;
 const string strMessageMagic = "Bitcoin Signed Message:\n"; // from main.cpp
 
+static PyObject* validate_address(PyObject* self, PyObject* args) {
+    const char* charaddress;
+
+    if(!PyArg_ParseTuple(args, "s", &charaddress))
+        return NULL;
+
+    CBitcoinAddress address(charaddress);
+    bool isValid = address.IsValid();
+
+    return PyBool_FromLong(isValid);
+}
+
 static PyObject* verify_message(PyObject* self, PyObject* args) {
     const char* address;
     const char* sign;
@@ -107,6 +119,8 @@ static PyMethodDef SignMethods[] =
 {
      {"verify_message", verify_message, METH_VARARGS, "verify_message(BitcoinAddress, Signature, Message)"},
      {"sign_message", sign_message, METH_VARARGS, "sign_message(Base58PrivateKey, Message)"},
+     {"validate_address", validate_address, METH_VARARGS, "validate_address(BitcoinAddress)"},
+     
      {NULL, NULL, 0, NULL}
 };
  

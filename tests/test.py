@@ -37,6 +37,18 @@ class BitcoinSignTest(unittest.TestCase):
 			self.assertTrue(signature)
 			self.assertTrue(bitcoinsign.verify_message(self.address, signature, message))
 
+	def test_validate_addresses(self):
+		address_list = ["1JTBWx4TQuPntUa4LDShg6xsbfEVFWbG9x", 
+						"1E82GR2Mri1MBYNXdMUw2zPzEBRxeY6Rhm",
+						"14dV8g3rzZSPU81PZxoxnPXaGbxASHLQW6",
+						"1HANvqedfwVskLa5sgXuycswsuz9jRGLLV",
+						"1NwjwygFoWnvjkfTeniZT6xsUgFSzfAwh",
+						"1FtHnUBWrmw3MqSHpKitoTjqau7zzjyfqD",
+						"1FtHnUBWrmw3MqSHpKitoTjqau7zzjyfqD"]
+
+		for address in address_list:
+			self.assertTrue(bitcoinsign.validate_address(address))
+
 
 if __name__ == '__main__':
     unittest.main()
